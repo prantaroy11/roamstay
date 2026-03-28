@@ -3,17 +3,17 @@ import { QueryInterface } from "sequelize";
 module.exports = {
   async up (queryInterface:QueryInterface) {
     await queryInterface.sequelize.query(`
-        ALTER TABLE hotels
-        ADD COLUMN ratings DECIMAL(3,2) DEFAULT NULL,
-        ADD COLUMN rating_count INT DEFAULT NULL
+        ALTER TABLE hotels 
+        CHANGE ratings rating DECIMAL(3,2),
+        CHANGE rating_count ratingCount INT;
     `);
   },
 
   async down (queryInterface:QueryInterface) {
     await queryInterface.sequelize.query(`
-        ALTER TABLE hotels
-        DROP COLUMN ratings,
-        DROP COLUMN rating_count
+        ALTER TABLE hotels 
+        CHANGE rating ratings DECIMAL(3,2),
+        CHANGE ratingCount rating_count INT;
     `);
   }
 };
