@@ -1,5 +1,5 @@
 import express from 'express';
-import { createHotelHandler, getHotelByIdHandler } from '../../controllers/hotel.controller';
+import { createHotelHandler, getAllHotelsHandler, getHotelByIdHandler } from '../../controllers/hotel.controller';
 import { validateRequestBody } from '../../validators';
 import { hotelSchema } from '../../validators/hotel.validator';
 
@@ -10,5 +10,6 @@ hotelRouter.post('/',
     createHotelHandler);
 
 hotelRouter.get('/:id',getHotelByIdHandler);
+hotelRouter.get('/',getAllHotelsHandler);
 
 export default hotelRouter;
